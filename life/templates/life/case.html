@@ -1,0 +1,389 @@
+<!-- CASE -->
+{% load static %}
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title></title>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" type="text/css" href="{% static '/life/vendor/bootstrap/css/bootstrap.css' %}" />
+    <link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static '/life/css/main.css' %}" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
+    
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
+    <script src="{% static '/life/vendor/jquery/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static '/life/vendor/jquery-ui/jquery-ui.min.js' %}"></script>
+  
+  </head>
+  
+  <style>
+    body, html {
+      height: 100%;
+      margin: 0;
+      background-image:linear-gradient(rgba(241, 255, 251, 0.5), rgba(187,225,220,0.5)),url("https://images.pexels.com/photos/4827/nature-forest-trees-fog.jpeg?cs=srgb&dl=fog-foggy-forest-4827.jpg&fm=jpg");
+      background-attachment: fixed;
+      background-size: cover;
+    }
+    
+    .searchBarWrapper {
+      position: absolute;
+      top:0px;
+      left:0px;
+      height:80px;
+      background-color:#1a6073;
+      width:100%;
+      display: inline-block;
+    }
+    
+    #searchBar {
+      display: inline-block;
+      border-radius: 15px;
+      border-color: darkblue;
+      border-width: 2px;
+      background-color: white;
+      min-width: 75%;
+      height: 45% !important;
+      vertical-align: middle;
+      margin: 22px 0px 16px 16px;
+    }
+    
+    #create {
+      display: inline-block;
+      min-width:20%;
+      text-align:center;
+      vertical-align:middle;
+    }
+    
+    .caseHistoryWrapper {
+      background:#ffffffe8;
+      border-radius: 0px;
+      height:120px;
+      width:100%;
+      border-bottom: 1px solid #56afa4;
+    }
+    
+    .caseHistoryLeftWrapper {
+      display:inline-block;
+      float: left;
+      width: 50%;
+      margin: 10px 0px 10px 10px;
+      
+    }
+    
+    .caseHistoryRightWrapper {
+      display:inline-block;
+      float: right;
+      width:40%;
+      margin: 10px 10px 10px 0px;  
+      padding-top:5px;
+    }
+    
+    .condition {
+      font-size: 24px;
+      font-weight:bold;
+    }
+
+    
+    .doctorWrapper {
+      display:inline-block;
+    }
+    
+    .doctorName {
+      font-weight:bold;
+      font-size:13px;
+    }
+    
+    .doctorDescription {
+      font-size:12px;
+    }
+    
+    .location {
+      font-size:17px;
+      float:right;
+    }
+    .time {
+      font-size:17px;
+      float:right;
+    }
+    
+    
+    #menu {
+      position:fixed;
+      display:flex;
+      flex-direction: row;
+      justify-content:space-evenly;
+      left:0px;
+      bottom:-80px;
+      height:80px;
+      width:100%;
+      background:#1c5e73;
+      vertical-align:middle;
+      z-index:100;
+    }
+    
+
+    .menuICON {
+      color: white;
+      vertical-align:middle;
+      font-size:2.1em;
+      margin-top:12px;
+      
+    }
+    
+    #homeButton {
+      border-radius:100%;
+      background:#1c5e73;
+      border:none;
+      width:100px;
+      display:inline-block;
+      position: fixed;
+      left:159px;
+      bottom:-70px;
+      height:100px;
+      z-index:1;
+    }
+    
+    
+  </style>
+  
+  <body>
+    <div class="searchBarWrapper">
+      <div id="searchBar">
+        <i class="fas fa-search" style="font-size: 22px; margin:7px 8px; color: #649dad;"></i>
+      </div>
+      <div id="create">
+        <a href="/life/case_create"><i class="fas fa-plus" style="font-size: 2.6em; color:#e8fbf1;"></i></a>
+      </div>
+    </div>
+   <div class="container-fluid">
+     <div class="row" style="height:60px;">
+        &nbsp;
+      </div>
+     <div class="row align-item-center">
+       <div class="col-12" style="padding: 0px !important;">
+         <div class="caseHistoryWrapper">
+           <div class="caseHistoryLeftWrapper">
+             <div class="condition">
+               Atrophic Gastritis
+             </div>
+            <div class="doctorWrapper">
+              <div class="doctorName">Dr. S.Wang</div>
+              <div class="doctorDescription">Gastroenterologists @ Tang Center</div>
+            </div>
+           </div>
+           <div class="caseHistoryRightWrapper">
+             <div class="location">
+               Tang center 
+             </div>
+             <div class="time">
+               July.20.2018 
+             </div>
+           </div>
+         </div>
+       </div>
+     </div>
+     <div class="row align-item-center">
+       <div class="col-12" style="padding: 0px !important;">
+         <div class="caseHistoryWrapper">
+           <div class="caseHistoryLeftWrapper">
+             <div class="condition">
+               Fever and flu
+             </div>
+            <div class="doctorWrapper">
+              <div class="doctorName">Me</div>
+              <div class="doctorDescription">&nbsp;</div>
+            </div>
+           </div>
+           <div class="caseHistoryRightWrapper">
+             <div class="location">
+               Self-edit
+             </div>
+             <div class="time">
+               January.11.2018 
+             </div>
+           </div>
+         </div>
+       </div>
+     </div>
+     <div class="row align-item-center">
+       <div class="col-12" style="padding: 0px !important;">
+         <div class="caseHistoryWrapper">
+           <div class="caseHistoryLeftWrapper">
+             <div class="condition">
+               Scratch (left arm)
+             </div>
+            <div class="doctorWrapper">
+              <div class="doctorName">Dr. K.Wayne</div>
+              <div class="doctorDescription">First aid @ Tang Center</div>
+            </div>
+           </div>
+           <div class="caseHistoryRightWrapper">
+             <div class="location">
+               Tang center 
+             </div>
+             <div class="time">
+               January.03.2018 
+             </div>
+           </div>
+         </div>
+       </div>
+     </div>
+     <div class="row align-item-center">
+       <div class="col-12" style="padding: 0px !important;">
+         <div class="caseHistoryWrapper">
+           <div class="caseHistoryLeftWrapper">
+             <div class="condition">
+               Physical Therapy
+             </div>
+            <div class="doctorWrapper">
+              <div class="doctorName">Dr. O.Bloom</div>
+              <div class="doctorDescription">Physical therapist</div>
+            </div>
+           </div>
+           <div class="caseHistoryRightWrapper">
+             <div class="location">
+               Home
+             </div>
+             <div class="time">
+               December.29.2017 
+             </div>
+           </div>
+         </div>
+       </div>
+     </div>
+     <div class="row align-item-center">
+       <div class="col-12" style="padding: 0px !important;">
+         <div class="caseHistoryWrapper">
+           <div class="caseHistoryLeftWrapper">
+             <div class="condition">
+               Physical Therapy
+             </div>
+            <div class="doctorWrapper">
+              <div class="doctorName">Dr. O.Bloom</div>
+              <div class="doctorDescription">Physical therapist</div>
+            </div>
+           </div>
+           <div class="caseHistoryRightWrapper">
+             <div class="location">
+               Home
+             </div>
+             <div class="time">
+               December.20.2017 
+             </div>
+           </div>
+         </div>
+       </div>
+     </div>
+     <div class="row align-item-center">
+       <div class="col-12" style="padding: 0px !important;">
+         <div class="caseHistoryWrapper">
+           <div class="caseHistoryLeftWrapper">
+             <div class="condition">
+               Physicial Therapy
+             </div>
+            <div class="doctorWrapper">
+              <div class="doctorName">Dr. O.Bloom</div>
+              <div class="doctorDescription">Physical therapist</div>
+            </div>
+           </div>
+           <div class="caseHistoryRightWrapper">
+             <div class="location">
+               Home
+             </div>
+             <div class="time">
+               December.13.2017 
+             </div>
+           </div>
+         </div>
+       </div>
+     </div>
+     <div class="row align-item-center">
+       <div class="col-12" style="padding: 0px !important;">
+         <div class="caseHistoryWrapper">
+           <div class="caseHistoryLeftWrapper">
+             <div class="condition">
+               Physical Therapy 8
+             </div>
+            <div class="doctorWrapper">
+              <div class="doctorName">Dr. O.Bloom</div>
+              <div class="doctorDescription">Physical therapist</div>
+            </div>
+           </div>
+           <div class="caseHistoryRightWrapper">
+             <div class="location">
+               Home
+             </div>
+             <div class="time">
+               December.6.2017 
+             </div>
+           </div>
+         </div>
+       </div>
+     </div>
+     <div class="row align-item-center">
+       <div class="col-12" style="padding: 0px !important;">
+         <div class="caseHistoryWrapper">
+           <div class="caseHistoryLeftWrapper">
+             <div class="condition">
+               Physical Therapy 7
+             </div>
+            <div class="doctorWrapper">
+              <div class="doctorName">Dr. O.Bloom</div>
+              <div class="doctorDescription">Physical therapist</div>
+            </div>
+           </div>
+           <div class="caseHistoryRightWrapper">
+             <div class="location">
+               Home
+             </div>
+             <div class="time">
+               November.29.2017 
+             </div>
+           </div>
+         </div>
+       </div>
+     </div>
+     <div class="row" style="height:80px;">
+        &nbsp;
+     </div>
+
+    
+    <div id="menu">
+      <a href="/life/forum/"><div class="menuICON">
+        <i class="fas fa-users"></i>
+        </div></a>
+       <a href="/life/reminder/"><div class="menuICON"  style="margin-left:-10px">
+         <i class="fas fa-bell"></i>
+      </div></a>
+      <a href="/life/"><div class="menuICON" style="margin-left:-8px; font-size: 3.5em !important; margin-top:-3px !important;">
+        <i class="fas fa-home"></i>
+      </div></a>
+      <a href="/life/case/"><div class="menuICON">
+        <i class="fas fa-notes-medical"></i>
+      </div></a>      
+      <a href="/life/tracker/"><div class="menuICON">
+        <i class="fas fa-calendar-check"></i>
+      </div></a>
+    </div>
+    <div id="homeButton" onclick="toggleHideShow();"></div>
+  </body>
+  
+  <script>
+  function toggleHideShow() {
+    if ($( "#menu" ).css("bottom")=="-80px") {
+      $( "#menu" ).stop(true).animate({ bottom: "+=80px" }, 600 );
+      $("#homeButton").stop(true).animate({ bottom: "+=78px" }, 600 );
+    } else {
+        $("#menu").stop(true).animate({ bottom: "-=80px" }, 600);
+        $("#homeButton").stop(true).animate({ bottom: "-=78px" }, 600);   
+    }   
+  }
+  </script>
+</html>

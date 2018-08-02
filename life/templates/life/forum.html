@@ -1,0 +1,295 @@
+<!-- FORUM -->
+{% load static %}
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title></title>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+
+    <link rel="stylesheet" type="text/css" href="{% static '/life/vendor/bootstrap/css/bootstrap.css' %}" />
+    <link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static '/life/css/main.css' %}" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
+    
+   
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
+    <script src="{% static '/life/vendor/jquery/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static '/life/vendor/jquery-ui/jquery-ui.min.js' %}"></script>
+  
+  </head>
+  
+  <style>
+    body, html {
+      height: 100%;
+      margin: 0;
+      /*background-color: #66c6ba;*/
+      background-image:linear-gradient(rgba(72, 245, 197, 0.2), rgba(187,225,220,0.2)),url("https://images.pexels.com/photos/4827/nature-forest-trees-fog.jpeg?cs=srgb&dl=fog-foggy-forest-4827.jpg&fm=jpg");
+      background-attachment: fixed;
+      background-size: cover;
+
+    }
+    
+    .searchBarWrapper {
+      position: absolute;
+      top:0px;
+      left:0px;
+      height:80px;
+      background-color:#1a6073;
+      width:100%;
+      display: inline-block;
+    }
+    
+    #searchBar {
+      display: inline-block;
+      border-radius: 15px;
+      border-color: darkblue;
+      border-width: 2px;
+      background-color: white;
+      min-width: 75%;
+      height: 45% !important;
+      vertical-align: middle;
+      margin: 22px 0px 16px 16px;
+    }
+    
+    #create {
+      display: inline-block;
+      min-width:20%;
+      text-align:center;
+      vertical-align:middle;
+    }
+    
+    .forumWrapper {
+      margin-top: 55px;
+    }
+    
+    .questionWrapper {
+      border-radius: 25px;
+      background: #e4fff6e6;
+      max-width:95%;
+      min-height: 218px;
+      margin-top: 10px;
+      margin-left: 10px !important;
+      position:relative;
+    }
+    
+    .question {
+      font-weight: bold;
+      font-size: 25px;
+      margin: 0px 0px 16px 16px;
+      padding-top: 20px;
+      padding-bottom:15px;
+      border-bottom: 1px solid #56afa4;
+      width:92%;
+    }
+    
+    .answerWrapper {
+      margin-left:16px;
+    }
+    
+    .greenCheck {
+      color:green;
+      font-size:18px;
+    }
+    
+    .medal {
+      color:#d67309;
+      font-size:18px;
+    }
+    
+    .doctorICON {
+      font-size: 2.4em;
+    }
+    
+    .doctorWrapper {
+      display:inline-block;
+      margin-left:5px;
+    }
+    
+    .doctorName {
+      font-weight:bold;
+      font-size:18px;
+    }
+    
+    .doctorDescription {
+      font-size:13px;
+    }
+    
+    .answerText {
+      max-height:40px;
+      overflow:hidden;
+      padding-top: 16px;
+      font-size:14px;
+      max-width:97%;
+    }
+    
+    .shareLike {
+      font-size:20px;
+      float:right;
+      color: #79a5a1;
+      padding-right: 20px;
+      padding-top: 10px;
+      position:absolute;
+      bottom:8px;
+      right:0;
+    }
+    
+    #menu {
+      position:fixed;
+      display:flex;
+      flex-direction: row;
+      justify-content:space-evenly;
+      left:0px;
+      bottom:-80px;
+      height:80px;
+      width:100%;
+      background:#1c5e73;
+      vertical-align:middle;
+      z-index:100;
+    }
+    
+
+    .menuICON {
+      color: white;
+      vertical-align:middle;
+      font-size:2.1em;
+      margin-top:12px;
+      
+    }
+    
+    #homeButton {
+      border-radius:100%;
+      background:#1c5e73;
+      border:none;
+      width:100px;
+      display:inline-block;
+      position: fixed;
+      left:159px;
+      bottom:-70px;
+      height:100px;
+      z-index:1;
+    }
+    
+/*   .bg {
+      background-image:url("https://images.pexels.com/photos/531880/pexels-photo-531880.jpeg?cs=srgb&dl=cold-vehicles-water-531880.jpg&fm=jpg");
+      height:100%;
+      
+    } */
+  </style>
+
+  
+  <body>
+    <!-- Your layout here -->
+    <div class="searchBarWrapper">
+      <div id="searchBar">
+        <i class="fas fa-search" style="font-size: 22px; margin:7px 8px; color: #649dad;"></i>
+      </div>
+      <div id="create">
+        <a href="/life/forum_create"><i class="fas fa-plus" style="font-size: 2.6em; color:#e8fbf1;"></i></a>
+      </div>
+    </div>
+    <div class="forumWrapper" id="forumWrapperID">
+       {% if question_list %}
+        {% for question in question_list %}
+            <div class="questionWrapper" style="height:230px;" onclick="goToQuestion({{ question.id }})">
+              <div class="question">
+                <span>{{ question.question }}</span>
+                {% if question.answer_set.all|length > 0 %}
+                    <i class="fas fa-check-circle greenCheck"></i>
+                {% endif %}
+                {% if question.prof_answered %}
+                    <i class="fas fa-medal medal"></i>
+                {% endif %}
+              </div>
+              <div class="answerWrapper">
+                  {% if question.answer_set.all|length > 0 %}
+                    <i class="fas fa-user-circle doctorICON"></i>
+                    {% with question.answer_set.all|first as answer %}
+                        <div class="doctorWrapper">
+                          <div class="doctorName">{{ answer.user.username }}</div>
+                          <div class="doctorDescription">{{ answer.user.job_title }} @ {{ answer.user.workplace }}</div>
+                        </div>
+                        <div class="answerText">
+                            {{ answer.answer }}
+                        </div>
+                    {% endwith %}
+                  {% else %}
+                    <div>{{ question.description }}</div>
+                  {% endif %}
+              </div>
+              <div class="shareLike">
+                  {% if question.answer_set.all %}
+                    {% with question.answer_set.all|first as answer %}
+                      {% if answer.likes > 0 %}
+                        <i style="color:#FF3333" class="fas fa-heart" onclick="like()"></i>
+                        {{ answer.likes }}
+                      {% else %}
+                        <i class="fas fa-heart" onclick="like();"></i>
+                      {% endif %}
+                    {% endwith %}
+                  {% endif %}
+                  <i class="fas fa-retweet" style="margin-left:5px;"></i>
+                </div>
+            </div>
+        {% endfor %}
+      {% endif %}
+    </div>
+      
+    
+    <div id="menu">
+      <a href="/life/forum/"><div class="menuICON">
+        <i class="fas fa-users"></i>
+        </div></a>
+       <a href="/life/reminder/"><div class="menuICON"  style="margin-left:-10px">
+         <i class="fas fa-bell"></i>
+      </div></a>
+      <a href="/life/"><div class="menuICON" style="margin-left:-8px; font-size: 3.5em !important; margin-top:-3px !important;">
+        <i class="fas fa-home"></i>
+      </div></a>
+      <a href="/life/case/"><div class="menuICON">
+        <i class="fas fa-notes-medical"></i>
+      </div></a>      
+      <a href="/life/tracker/"><div class="menuICON">
+        <i class="fas fa-calendar-check"></i>
+      </div></a>
+    </div>
+    <div id="homeButton" onclick="toggleHideShow();">
+    </div>
+  
+  </body>
+  
+  <script>
+      
+    function goToQuestion(question_id) {
+        var $url = window.location;
+        var $questionUrl = $url + "question/" + question_id;
+        window.open($questionUrl)
+    }  
+    
+    function like() {
+      if ($(this).css("color")=="red") {
+        $(this).css("color","#79a5a1");
+      }
+      else {
+        $(this).css("color","red");
+      }
+    }
+    
+  function toggleHideShow() {
+    if ($( "#menu" ).css("bottom")=="-80px") {
+      $( "#menu" ).stop(true).animate({ bottom: "+=80px" }, 600 );
+      $("#homeButton").stop(true).animate({ bottom: "+=78px" }, 600 );
+    } else {
+        $("#menu").stop(true).animate({ bottom: "-=80px" }, 600);
+        $("#homeButton").stop(true).animate({ bottom: "-=78px" }, 600);   
+    }   
+  }
+  </script>
+  
+</html>

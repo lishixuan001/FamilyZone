@@ -1,0 +1,210 @@
+<!-- FORUM -->
+{% load static %}
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title></title>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" type="text/css" href="{% static '/life/vendor/bootstrap/css/bootstrap.css' %}" />
+    <link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static '/life/css/main.css' %}" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
+    
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
+    <script src="{% static '/life/vendor/jquery/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static '/life/vendor/jquery-ui/jquery-ui.min.js' %}"></script>
+  
+  </head>
+  
+  <style>
+    body, html {
+      height: 100%;
+      margin: 0;
+      /*background-color: #66c6ba;*/
+      background-image:linear-gradient(rgba(72, 245, 197, 0.2), rgba(187,225,220,0.2)),url("https://images.pexels.com/photos/4827/nature-forest-trees-fog.jpeg?cs=srgb&dl=fog-foggy-forest-4827.jpg&fm=jpg");
+      background-attachment: fixed;
+      background-size: cover;
+    }
+    
+      #go-back-icon {
+          margin-left: 5%;
+      }
+    
+    .input {
+      border: none !important;
+      border-radius: 20px;
+      padding: 10px;
+      box-shadow: 0px 0px 3px 0px #00000057;
+      margin-top:15px;
+      margin-bottom:25px;
+    }
+      
+    #container {
+        margin: 0 auto;
+        padding: 80px;
+    }
+      
+    #display {
+        margin: 0 auto;
+        width: 400px;
+    }
+      
+    #input {
+        padding: 30px;
+    }
+      
+      #username {
+          width: 95%;
+          border: 1px solid black;
+          font-size: 18px;
+      }
+      
+      #password {
+          width: 95%;
+          border: 1px solid black;
+          font-size: 18px;
+      }
+      
+      #confirm_password {
+          width: 95%;
+          border: 1px solid black;
+          font-size: 18px;
+      }
+      
+      #submit {
+          font-size: 24px;
+          border: none;
+          border-radius: 40px;
+          background-color: #058884fc;
+          padding: 20px 55px 20px 55px;
+          box-shadow: 0px 0px 16px 2px #00000057;
+          color:white;
+      }
+      
+  </style>
+    
+    <script>
+        $(document).ready(function(){
+            var $submitBtn = $("#submit");
+            var $passwordBox = $("#password");
+            var $confirmBox = $("#confirm_password");
+            var $errorMsg =  $('<span id="error_msg" style="color:red">Passwords do not match.</span>');
+            
+            $submitBtn.removeAttr("disabled");
+
+            function checkMatchingPasswords(){
+                if($confirmBox.val() != "" && $passwordBox.val != ""){
+                    if( $confirmBox.val() != $passwordBox.val() ){
+                        $submitBtn.attr("disabled", "disabled");
+                        $errorMsg.insertAfter($confirmBox);
+                    }
+                }
+            }
+
+            function resetPasswordError(){
+                $submitBtn.removeAttr("disabled");
+                var $errorCont = $("#error_msg");
+                if($errorCont.length > 0){
+                    $errorCont.remove();
+                }  
+            }
+
+
+            $("#confirm_password, #password")
+             .on("keydown", function(e){
+                /* only check when the tab or enter keys are pressed
+                 * to prevent the method from being called needlessly  */
+                if(e.keyCode == 13 || e.keyCode == 9) {
+                    checkMatchingPasswords();
+                }
+             })
+             .on("blur", function(){                    
+                // also check when the element looses focus (clicks somewhere else)
+                checkMatchingPasswords();
+            })
+            .on("focus", function(){
+                // reset the error message when they go to make a change
+                resetPasswordError();
+                checkMatchingPasswords();
+            })
+        })
+        
+            
+    </script>
+  
+  <body>
+    <nav class="navbar navbar-light">
+      <a class="navbar-brand" href="/life/">
+          <i class="fas fa-angle-left fa-3x" id="go-back-icon"></i>
+      </a>
+    </nav>
+      <div class="container">
+          <div id="display">
+              <form id=input action="/life/registration/" method="post">
+                  {% csrf_token %}
+                  <div class="form-group">
+                      <label for="username"><font size="4">Username</font></label><br>
+                      <input type="text" class="form-control input" id="username" name="username" placeholder="Enter Username" required>
+                  </div>
+                  <div class="form-group">
+                      <label for="password"><font size="4">Password</font></label><br>
+                      <input type="password" class="input form-control" id="password" name="password" placeholder="Enter Password" required>
+                  </div>
+                  <div class="form-group">
+                      <label for="confirm_password"><font size="4">Confirm Password</font></label><br>
+                      <input type="password" class="input form-control" id="confirm_password" name="condirm_password" placeholder="Re-Enter Password" required>
+                  </div>
+                  <br><br>
+                  <div class="form-group" align=center>
+                      <label class="sr-only">Submit Registration</label>
+                      <input class="btn btn-primary" id="submit" type="submit" value="Register">
+                  </div>
+              </form>
+          </div>
+      </div>
+  </body>
+ 
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- END -->

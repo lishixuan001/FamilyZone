@@ -1,0 +1,106 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title></title>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" type="text/css" href="{% static '/life/vendor/bootstrap/css/bootstrap.css' %}" />
+    <link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static '/life/css/main.css' %}" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
+    
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
+    <script src="{% static '/life/vendor/jquery/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static '/life/vendor/jquery-ui/jquery-ui.min.js' %}"></script>
+  
+  </head>
+  
+  <style>
+    body, html {
+      height: 100%;
+      margin: 0;
+      background-image:linear-gradient(rgba(241, 255, 251, 0.2), rgba(187,225,220,0.2)),url("https://images.pexels.com/photos/4827/nature-forest-trees-fog.jpeg?cs=srgb&dl=fog-foggy-forest-4827.jpg&fm=jpg");
+      background-attachment: fixed;
+      background-size: cover;
+    }
+    
+        #menu {
+      position:fixed;
+      display:flex;
+      flex-direction: row;
+      justify-content:space-evenly;
+      left:0px;
+      bottom:-80px;
+      height:80px;
+      width:100%;
+      background:#1c5e73;
+      vertical-align:middle;
+      z-index:100;
+    }
+    
+
+    .menuICON {
+      color: white;
+      vertical-align:middle;
+      font-size:2.1em;
+      margin-top:12px;
+      
+    }
+    
+    #homeButton {
+      border-radius:100%;
+      background:#1c5e73;
+      border:none;
+      width:100px;
+      display:inline-block;
+      position: fixed;
+      left:159px;
+      bottom:-70px;
+      height:100px;
+      z-index:1;
+    }
+    
+    
+  </style>
+  
+  <body>
+    
+    <div id="menu">
+      <a href="/life/forum/"><div class="menuICON">
+        <i class="fas fa-users"></i>
+        </div></a>
+       <a href="/life/reminder/"><div class="menuICON"  style="margin-left:-10px">
+         <i class="fas fa-bell"></i>
+      </div></a>
+      <a href="/life/"><div class="menuICON" style="margin-left:-8px; font-size: 3.5em !important; margin-top:-3px !important;">
+        <i class="fas fa-home"></i>
+      </div></a>
+      <a href="/life/case/"><div class="menuICON">
+        <i class="fas fa-notes-medical"></i>
+      </div></a>      
+      <a href="/life/tracker/"><div class="menuICON">
+        <i class="fas fa-calendar-check"></i>
+      </div></a>
+    </div>
+    <div id="homeButton" onclick="toggleHideShow();"></div>
+  </body>
+  
+  <script>
+  function toggleHideShow() {
+    if ($( "#menu" ).css("bottom")=="-80px") {
+      $( "#menu" ).stop(true).animate({ bottom: "+=80px" }, 600 );
+      $("#homeButton").stop(true).animate({ bottom: "+=78px" }, 600 );
+    } else {
+        $("#menu").stop(true).animate({ bottom: "-=80px" }, 600);
+        $("#homeButton").stop(true).animate({ bottom: "-=78px" }, 600);   
+    }   
+  }
+  </script>
+</html>

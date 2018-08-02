@@ -1,0 +1,154 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<title></title>
+        
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" type="text/css" href="{% static '/life/vendor/bootstrap/css/bootstrap.css' %}" />
+    <link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static '/life/css/main.css' %}" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
+    
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
+    <script src="{% static '/life/vendor/jquery/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static '/life/vendor/jquery-ui/jquery-ui.min.js' %}"></script>
+  
+	</head>
+  
+  <style>
+    body, html {
+      height: 100%;
+      margin: 0;
+      /*background-color: #66c6ba;*/
+      background-image:linear-gradient(rgba(72, 245, 197, 0.2), rgba(187,225,220,0.2)),url("https://images.pexels.com/photos/4827/nature-forest-trees-fog.jpeg?cs=srgb&dl=fog-foggy-forest-4827.jpg&fm=jpg");
+      background-attachment: fixed;
+      background-size: cover;
+    }
+    
+    .logIn {
+      display:inline-block;
+      color:#015a52;
+      font-weight:bold;
+      font-size:14px;
+      position:absolute;
+      top:20px;  
+    }
+    
+    #profile {
+      text-shadow: 1px 1px 2px #1d2923;
+      border-radius:100%;
+      color:#025a53;
+    }
+    
+    #greeting {
+      font-size: 20px
+    }
+    
+    #userName {
+      font-size:42px;
+    }
+    
+    .sectionContainer {
+      border-radius:25px;
+      background: #f9fdfab8;
+      display:inline-block;
+      width: 141px;
+      height:140px;
+      text-align:center;
+      vertical-align:middle;
+      color:#015a52;
+      font-size:36px;
+    }
+    
+  </style>
+	<body>
+		<!-- Your layout here -->
+    <div class="container-fluid">
+      <div class="row" style="height:50px;" >
+          {% if user.id == 5 %}
+            <a href="/life/login/"><div class="logIn" style="right:10px;"><u>Log in</u></div></a>
+            <a href="/life/registration/"><div class="logIn" style="right:60px;"><u>Register</u></div></a>
+          {% else %}
+            <a href="#" onClick="document.getElementById('logoutform').submit()"><div class="logIn" style="right:10px;"><u>Log out</u></div></a>
+            <form id="logoutform" method="POST" action="/life/">
+                {% csrf_token %}
+                <input type="hidden" name="logout">
+            </form>
+          {% endif %}
+      </div>
+      
+      <div class="row text-center" style="margin-bottom:10px;">
+        <div class="col-12" id="greeting">
+          Good Morning<!-- Auto-detect Time -->
+        </div>
+      </div>
+      <div class="row align-item-center text-center" style="margin-bottom:10px;">
+        <div class="col-12">
+          <div id="profile">
+            <i class="fas fa-user-circle fa-8x" ></i>
+          </div>
+        </div>
+      </div>
+      <div class="row text-center">
+        {% if user.id == 5 %} <!-- Not logged in if id == 5 (Anonymous) -->
+            <div class="col-12" id="userName">
+                Guest
+            </div>
+        {% else %}
+            <div class="col-12" id="userName">
+                {{ user.username }}
+            </div>
+        {% endif %}
+      </div>
+      <div class="row aligh-item-center text-center"  style="margin-top:50px; margin-bottom:10px;">
+        <div class="col-6 aligh-item-center text-center" style="padding-right:5px !important; padding-left:5px !important;">
+          <a href="/life/forum/"><div class="sectionContainer" style="float:right;">
+            <i class="fas fa-users" style="margin:48px;"></i>
+          </div></a>
+        </div>
+        <div class="col-6 aligh-item-center text-center" style="padding-right:5px !important; padding-left:5px !important;">
+           <a href="/life/reminder/"><div class="sectionContainer" style="float:left;">
+            <i class="fas fa-bell" style="margin:48px;"></i>
+             </div></a>
+        </div>
+      </div>
+      <div class="row aligh-item-center text-center">
+        <div class="col-6 aligh-item-center text-center" style="padding-right:5px !important; padding-left:5px !important;">
+           <a href="/life/case/"><div class="sectionContainer" style="float:right;">
+            <i class="fas fa-notes-medical" style="margin:48px;"></i>
+             </div></a>
+        </div>
+        <div class="col-6 aligh-item-center text-center" style="padding-right:5px !important; padding-left:5px !important;">
+           <a href="/life/tracker/"><div class="sectionContainer" style="float:left;">
+            <i class="fas fa-calendar-check" style="margin:48px;"></i>
+             </div></a>
+        </div>
+      </div>      
+    </div>
+
+	</body>
+  
+  <script>
+    $(document).ready(function(){
+      var today = new Date();
+      var h = today.getHours();
+      
+      if (h>= 0 && h <12) {
+        $('#greeting').text("Good Morning");
+      }
+      else if (h >= 12 && h<18) {
+         $('#greeting').text("Good Afternoon");  
+      }
+      else {
+         $('#greeting').text("Good Evening");
+      }
+    })
+  </script>
+</html>

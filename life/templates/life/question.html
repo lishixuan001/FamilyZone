@@ -1,0 +1,334 @@
+{% load static %}
+
+<!DOCTYPE html>
+
+<html>
+	<head>
+		<title></title>
+        
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" type="text/css" href="{% static '/life/vendor/bootstrap/css/bootstrap.css' %}" />
+    <link href="https://fonts.googleapis.com/css?family=Fira+Sans" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static '/life/css/main.css' %}" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
+    
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
+    <script src="{% static '/life/vendor/jquery/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static '/life/vendor/jquery-ui/jquery-ui.min.js' %}"></script>
+  
+	</head>
+  
+  <style>
+    body, html {
+      height: 100%;
+      margin: 0;
+      /*background-color: #66c6ba;*/
+      background-image:linear-gradient(rgba(72, 245, 197, 0.2), rgba(187,225,220,0.2)),url("https://images.pexels.com/photos/4827/nature-forest-trees-fog.jpeg?cs=srgb&dl=fog-foggy-forest-4827.jpg&fm=jpg");
+      background-attachment: fixed;
+      background-size: cover;
+    }
+    
+    #go-back-icon {
+        margin-left: 5%;
+    }
+    
+    .navbar {
+      position: absolute;
+      top: 0px !important;
+    }
+    
+    .questionWrapper {
+      border-radius: 25px;
+      background: #e4fff6e6;
+      max-width:100%;
+      min-height: 218px;
+      margin-top: 10px;
+      margin-left: 0px !important;
+      position:relative;
+    }
+    
+    .question {
+      font-weight: bold;
+      font-size: 24px;
+      margin: 0px 0px 16px 16px;
+      padding-top: 20px;
+      padding-bottom:15px;
+      border-bottom: 1px solid #56afa4;
+      width:92%;
+    }
+    
+    .question {
+    font-weight: bold;
+    font-size: 25px;
+    margin: 0px 0px 16px 16px;
+    padding-top: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #56afa4;
+    width: 92%;
+}
+    
+    .OtherAnswer {
+      height:150px;
+      background:#f0fff8c7;
+      border-radius: 25px;
+      width:95%;
+      padding: 20px 0px 20px 0px;
+      margin-left:10px;
+      overflow:hidden;
+    }
+    
+    .answerWrapper {
+      margin-left:16px;
+    }
+    
+    .questionDescription {
+       margin-left:16px;
+    }
+    
+    .questionWrapper {
+      border-radius: 25px;
+      background: white;
+      max-width: 95%;
+      min-height: 218px;
+      margin-top: 10px;
+      margin-left: 10px !important;
+      position: relative;
+    }
+    
+    .greenCheck {
+      color:green;
+      font-size:18px;
+    }
+    
+    .medal {
+      color:#d67309;
+      font-size:18px;
+    }
+    
+    .doctorICON {
+      font-size: 2.4em;
+    }
+    
+    .doctorWrapper {
+      display:inline-block;
+      margin-left:5px;
+    }
+    
+    .doctorName {
+      font-weight:bold;
+      font-size:18px;
+    }
+    
+    .doctorDescription {
+      font-size:13px;
+    }
+    
+    .answerText {
+      max-height:40px;
+      overflow:hidden;
+      padding-top: 16px;
+      font-size:14px;
+      max-width:97%;
+    }
+    
+    .shareLike {
+      font-size:20px;
+      float:right;
+      color: #79a5a1;
+      padding-right: 20px;
+      padding-top: 10px;
+      position:absolute;
+      bottom:8px;
+      right:20px;
+    }
+    
+    .input {
+      border: none !important;
+      border-radius: 20px;
+      padding: 10px;
+      box-shadow: 0px 0px 3px 0px #00000057;
+      width: 100%;
+    }
+    
+    #input {
+      padding: 10px 30px 10px 30px;
+    }
+    
+    #question-description {
+      width: 95%;
+      height: 10em;
+      border: 1px solid black;
+      font-size: 18px;
+    }
+    
+     #submit {
+          font-size: 22px;
+          border: none;
+          border-radius: 40px;
+          background-color: #058884fc;
+          padding: 10px 40px 10px 40px;
+          box-shadow: 0px 0px 16px 2px #00000057;
+          color:white;
+      }
+  
+    
+    #menu {
+      position:fixed;
+      display:flex;
+      flex-direction: row;
+      justify-content:space-evenly;
+      left:0px;
+      bottom:-80px;
+      height:80px;
+      width:100%;
+      background:#1c5e73;
+      vertical-align:middle;
+      z-index:100;
+    }
+    
+
+    .menuICON {
+      color: white;
+      vertical-align:middle;
+      font-size:2.1em;
+      margin-top:12px;
+      
+    }
+    
+    #homeButton {
+      border-radius:100%;
+      background:#1c5e73;
+      border:none;
+      width:100px;
+      display:inline-block;
+      position: fixed;
+      left:159px;
+      bottom:-70px;
+      height:100px;
+      z-index:1;
+    }
+  </style>
+  
+  <body>
+    <nav class="navbar navbar-light">
+      <a class="navbar-brand" href="/life/forum/">
+          <i class="fas fa-angle-left fa-3x" id="go-back-icon"></i>
+      </a>
+    </nav>
+    <div class="container-fluid">
+      <div class="row" style="height:50px;">
+        &nbsp;
+      </div>
+      <div class="row align-item-center">
+        <div class="col-12">
+          <div class="questionWrapper">
+            <div class="question">
+              <span id="Question">{{ question.question }}</span>
+              {% if question.answer_set.all|length > 0 %}
+                <i class="fas fa-check-circle greenCheck"></i>
+              {% endif %}
+              {% if question.prof_answered %}
+                <i class="fas fa-medal medal"></i>
+              {% endif %}
+            </div>
+            
+          <div class="questionDescription">
+            <div class="answerText">
+              {{ question.description }}
+            </div>
+            
+        </div>
+        </div>
+      </div>
+    </div>
+      <div class="row align-item-center">
+        <div class="col-12">
+          <div class="myAnswerWrapper">
+              <form id=input action="/life/forum/question/{{ question.id }}/" method="post">
+                  {% csrf_token %}
+                  <div class="form-group" style="margin-top:20px">
+                      <label><font size="4" style="font-weight:bold;margin: 10px 18px 0px 30px;">Your answer</font></label><br>
+                      <textarea type="text" rows="5" class="input form-control" id="yourAnswer" name="answer" required></textarea>
+                  </div>
+                  <br>
+                  <div class="form-group" align=center>
+                      <label class="sr-only">Submit Question</label>
+                      <input class="btn btn-primary" id="submit" type="submit" value="Submit">
+                  </div>
+              </form>
+          </div>
+        </div>
+      </div>
+      
+        {% for answer in question.answer_set.all %}
+          <div class="row align-item-center" style="margin-top:30px;">
+            <div class="col-12">
+              <div class="OtherAnswer" onclick="ToggleHideShowAns()">
+              <div class="answerWrapper">
+                <i class="fas fa-user-circle doctorICON"></i>
+                <div class="doctorWrapper">
+                  <div class="doctorName">{{ answer.user.username }}</div>
+                  <div class="doctorDescription">{{ answer.user.job_title }} @ {{ answer.user.workplace }}</div>
+                </div>
+                <div class="answerText" id="AnswerText1">
+                  {{ answer.answer }}
+                </div>
+                </div>
+                <div class="shareLike">
+                    {% if answer.likes > 0 %}
+                        <i style="color:#FF3333" class="fas fa-heart"></i> 
+                        {{ answer.likes }}
+                    {% else %}
+                        <i class="fas fa-heart"></i>
+                    {% endif %}
+                  <i class="fas fa-retweet" style="margin-left:5px;"></i>
+                </div> 
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+ 
+    
+    
+     <div id="menu">
+      <a href="/life/forum/"><div class="menuICON">
+        <i class="fas fa-users"></i>
+        </div></a>
+       <a href="/life/reminder/"><div class="menuICON"  style="margin-left:-10px">
+         <i class="fas fa-bell"></i>
+      </div></a>
+      <a href="/life/"><div class="menuICON" style="margin-left:-8px; font-size: 3.5em !important; margin-top:-3px !important;">
+        <i class="fas fa-home"></i>
+      </div></a>
+      <a href="/life/case/"><div class="menuICON">
+        <i class="fas fa-notes-medical"></i>
+      </div></a>      
+      <a href="/life/tracker/"><div class="menuICON">
+        <i class="fas fa-calendar-check"></i>
+      </div></a>
+    </div>
+    <div id="homeButton" onclick="toggleHideShow();">
+    </div>
+      <div style="height:80px">
+        &nbsp;
+      </div>
+  </body>
+  
+  <script>
+    function toggleHideShow() {
+      if ($( "#menu" ).css("bottom")=="-80px") {
+        $( "#menu" ).stop(true).animate({ bottom: "+=80px" }, 600 );
+        $("#homeButton").stop(true).animate({ bottom: "+=78px" }, 600 );
+      } else {
+          $("#menu").stop(true).animate({ bottom: "-=80px" }, 600);
+          $("#homeButton").stop(true).animate({ bottom: "-=78px" }, 600);   
+      }   
+    }
+    
+  </script>
+  
+</html>
