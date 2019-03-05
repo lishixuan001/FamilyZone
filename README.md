@@ -1,4 +1,5 @@
-# CS 160 - Summer 2018 - Final Project
+# Family Daily Interaction Platform
+> Final Project for CS 160
 
 ## Admin Superuser:
  * Username: cs160-proj5
